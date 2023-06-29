@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeScreenView: View {
+    var categories: [CategoryItems] = []
+    var products: [Dishes] = []
     var body: some View {
-        Text("HOME SCREEN")
+        CategoryRow(categories: categories, products: products)
     }
 }
 

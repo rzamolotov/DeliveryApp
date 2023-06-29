@@ -65,7 +65,7 @@ struct ItemView: View {
                         }
                         .foregroundColor(.black)
                         .font(.callout)
-                        .fontWeight(.semibold)
+                        
                         Spacer()
                     }
                     .padding([.trailing, .top])
@@ -96,10 +96,12 @@ struct ItemView: View {
                         .foregroundColor(.gray)
                         .opacity(0.7)
                     }
-                    Text(product.description)
-                        .font(.body)
-                        .foregroundColor(.black)
-                        .opacity(0.8)
+                    ScrollView{
+                        Text(product.description)
+                            .font(.body)
+                            .foregroundColor(.black)
+                            .opacity(0.8)
+                    }
                 }
                 .frame(width: screen.width / 1.2, height: screen.height / 5)
                 Button {

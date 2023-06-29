@@ -11,7 +11,7 @@ struct Products {
     let dishes: [Dishes]
 }
 
-struct Dishes {
+struct Dishes: Identifiable {
     let id: Int
     let name: String
     let price: Int

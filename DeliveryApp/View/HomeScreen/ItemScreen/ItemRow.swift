@@ -10,35 +10,39 @@ import SwiftUI
 struct ItemRow: View {
     
     @State private var isPopupVisible = false
-    var product: Dishes
+    var products: [Dishes]
     
     var body: some View {
-        ZStack {
-            Button {
-                isPopupVisible = true
-            } label: {
-                ItemPreview(product: product)
-            }
-            if isPopupVisible {
-                Color.black.opacity(0.2)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        isPopupVisible = false
+        ForEach(products) { product in
+            ZStack {
+                Button {
+                    isPopupVisible = true
+                } label: {
+                    ItemPreview(product: product)
+                }
+                if isPopupVisible {
+                    ZStack {
+                        Color.gray.opacity(0.2)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                isPopupVisible = false
+                            }
+                        VStack{
+                            Spacer()
+                            ItemView(product: product)
+                            
+                            Spacer()
+                        }
                     }
-                VStack{
-                    Spacer()
-                    ItemView(product: product)
-                    Spacer()
+                    .animation(.easeInOut(duration: 1.0))
                 }
             }
-            
-            
         }
     }
 }
 
 struct ItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        ItemRow(product: productExample)
+        ItemRow(products:  [productExample])
     }
 }
