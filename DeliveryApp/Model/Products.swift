@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Products {
+struct Products: Codable {
     let dishes: [Dishes]
 }
 
-struct Dishes: Identifiable {
+struct Dishes: Identifiable, Codable {
     let id: Int
     let name: String
     let price: Int
@@ -19,4 +19,8 @@ struct Dishes: Identifiable {
     let description: String
     let image_url: String
     let tegs: [String]
+    
+    enum CodingKeys: CodingKey {
+        case id, name, price, weight, description, image_url, tegs
+    }
 }

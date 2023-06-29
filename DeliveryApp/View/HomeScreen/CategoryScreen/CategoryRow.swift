@@ -13,19 +13,17 @@ struct CategoryRow: View {
     var products: [Dishes]
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(categories) { category in
-                    NavigationLink {
-                        ItemRow(products: products)
-                    } label: {
-                        CategoryItemView(categoryItem: category)
-                    }
-
-                    
+        ScrollView {
+            ForEach(categories) { category in
+                NavigationLink {
+                    Item_HeaderView()
+                } label: {
+                    CategoryItemView(categoryItem: category)
                 }
             }
+            .padding(.bottom, 30)
         }
+        
     }
 }
 

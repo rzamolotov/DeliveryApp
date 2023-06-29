@@ -17,11 +17,11 @@ import SwiftUI
 let feedback = UIImpactFeedbackGenerator(style: .medium)
 
 // LAYOUT
-let columnSpacing: CGFloat = 5
+let columnSpacing: CGFloat = 2
 let screen = UIScreen.main.bounds
-let rowSpacing: CGFloat = 5
+let rowSpacing: CGFloat = 2
 var gridLayout: [GridItem] {
-  return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 2)
+  return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 3)
 }
 
 //Fonts
@@ -45,6 +45,13 @@ let fontSizeMedium = screen.height / 50
 let fontSizeMediuPlus = screen.height / 40
 let fontSizeLarge = screen.height / 30
 let fontSizeHuge = screen.height / 20
+
+
+func getCurrentDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter.string(from: Date())
+    }
 
 // Product example
 let productExample = Dishes(

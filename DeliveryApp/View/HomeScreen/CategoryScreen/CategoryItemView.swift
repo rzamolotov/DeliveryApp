@@ -18,10 +18,10 @@ struct CategoryItemView: View {
                 placeholder:{ ProgressView()},
                 image:  { Image(uiImage: $0) .resizable() } )
             .scaledToFit()
-            VStack {
+            VStack(alignment: .leading) {
                 HStack {
                     Text(categoryItem.name)
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
                         .opacity(0.9)
@@ -33,7 +33,7 @@ struct CategoryItemView: View {
             }
             
         }
-        .frame(width: screen.width, height: screen.height / 5)
+        .frame(width: screen.width / 1.1, height: screen.height / 5.5)
     }
 }
 

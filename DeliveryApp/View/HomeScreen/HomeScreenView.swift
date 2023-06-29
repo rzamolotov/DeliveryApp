@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-    var categories: [CategoryItems] = []
-    var products: [Dishes] = []
+    @EnvironmentObject var networkVM: Network
+    
     var body: some View {
-        CategoryRow(categories: categories, products: products)
+        NavigationView {
+            VStack{
+                HeaderViewMainPageView()
+                CategoryRow(categories: networkVM.dataCategory, products: networkVM.dataDishes)
+            }
+        }
     }
 }
 
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
+            .environmentObject(Network())
     }
 }

@@ -13,11 +13,20 @@ struct ItemPreview: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(
-                url: URL(string: product.image_url)!,
-                placeholder:{ ProgressView()},
-                image:  { Image(uiImage: $0) .resizable() } )
-            .scaledToFit()
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.gray)
+                    .opacity(0.1)
+                    .cornerRadius(10)
+                    
+                AsyncImage(
+                    url: URL(string: product.image_url)!,
+                    placeholder:{ ProgressView()},
+                    image:  { Image(uiImage: $0) .resizable() } )
+                .scaledToFit()
+                .frame(width: screen.width / 4, height: screen.width / 4)
+            }
+            .frame(width: screen.width / 3.5, height: screen.width / 3.5)
             
             Text(product.name)
                 .font(.caption)
@@ -25,7 +34,7 @@ struct ItemPreview: View {
                 .foregroundColor(.black)
                 .opacity(0.6)
         }
-        .frame(width: screen.width / 3.5, height: screen.height / 5)
+        .frame(width: screen.width / 3.5, height: screen.height / 6)
     }
 }
 

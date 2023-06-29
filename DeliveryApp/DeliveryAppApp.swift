@@ -12,6 +12,8 @@ struct DeliveryAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(Network())
+                .environmentObject(Shop())
         }
     }
 }
