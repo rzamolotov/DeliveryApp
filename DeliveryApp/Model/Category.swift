@@ -8,10 +8,10 @@
 import Foundation
 
 struct Category {
-    let categories: [Items]
+    let categories: [CategoryItems]
 }
 
-struct Items: Identifiable {
+struct CategoryItems: Identifiable {
     let id: Int
     let name: String
     let image_url: String

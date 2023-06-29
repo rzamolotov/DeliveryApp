@@ -16,7 +16,7 @@ struct Dishes {
     let name: String
     let price: Int
     let weight: Int
-    let description: Int
-    let image_url: Int
+    let description: String
+    let image_url: String
     let tegs: [String]
 }
