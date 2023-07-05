@@ -11,13 +11,14 @@ import Combine
 
 
 struct HeaderViewMainPageView: View {
-    
+    @StateObject private var locationManagerDelegate = LocationManagerDelegate()
+
     var body: some View {
         HStack {
             Image(systemName: "location.circle")
                 .font(.largeTitle)
-            VStack {
-                Text("Севастополь")
+            VStack(alignment: .leading) {
+                Text(locationManagerDelegate.currentLocation)
                 Text(getCurrentDate())
             }
             Spacer()
@@ -25,12 +26,9 @@ struct HeaderViewMainPageView: View {
                 .font(.largeTitle)
         }
         .padding()
+        .onAppear {
+            locationManagerDelegate.requestLocation()
+        }
     }
-  
 }
 
-struct HeaderViewMainPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderViewMainPageView()
-    }
-}

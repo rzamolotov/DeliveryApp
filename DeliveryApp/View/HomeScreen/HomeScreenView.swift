@@ -12,7 +12,7 @@ struct HomeScreenView: View {
     
     var body: some View {
         NavigationView {
-            
+
             VStack{
                 HeaderViewMainPageView()
                 CategoryRow(categories: networkVM.dataCategory, products: networkVM.dataDishes)

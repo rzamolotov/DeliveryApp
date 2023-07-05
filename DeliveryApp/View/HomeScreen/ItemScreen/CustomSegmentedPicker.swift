@@ -10,7 +10,9 @@ import SwiftUI
 struct CustomSegmentedPicker: View {
     
     enum ProductPicker: String, CaseIterable, Identifiable {
+        
         case allMenu, rice, salad, fish
+        
         var id: Self {
             self
         }
@@ -30,10 +32,10 @@ struct CustomSegmentedPicker: View {
     
     var category: [Dishes]
 
-    @State private var selectedProduct: ProductPicker.title
+    @Binding var selectedTeg: ProductPicker
     
     var filteredProducts: [Dishes] {
-        let result = category.filter { $0.tegs.contains(selectedProduct.title) }
+        let result = category.filter { $0.tegs.contains(selectedTeg.title) }
         return result
     }
     
@@ -44,22 +46,20 @@ struct CustomSegmentedPicker: View {
                     ZStack {
                         Rectangle()
                             .cornerRadius(10)
-                            .frame(width: screen.width / 3)
-                            .padding(2)
-                            .opacity(selectedProduct == category ? 1 : 0.1)
-                            .foregroundColor(selectedProduct == category ? .blue : .gray)
+                            .frame(width: screen.width / 4)
+                            .padding(6)
+                            .opacity(selectedTeg == category ? 1 : 0.1)
+                            .foregroundColor(selectedTeg == category ? .blue : .gray)
                             .onTapGesture {
-                                withAnimation(.interactiveSpring(response: 0.2,
-                                                                 dampingFraction: 2,
-                                                                 blendDuration: 0.5)) {
-                                    selectedProduct = category
+                                withAnimation() {
+                                    selectedTeg = category
                                 }
                             }
                     }
                     .overlay(
                         Text(category.title)
-                            .fontWeight(selectedProduct == category ? .bold : .regular)
-                            .foregroundColor(selectedProduct == category ? .white: .black)
+                            .fontWeight(selectedTeg == category ? .bold : .regular)
+                            .foregroundColor(selectedTeg == category ? .white: .black)
                     )
                 }
             }
@@ -69,8 +69,8 @@ struct CustomSegmentedPicker: View {
     }
 }
 
-struct CustomSegmentedPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomSegmentedPicker()
-    }
-}
+//struct CustomSegmentedPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomSegmentedPicker(category: [productExample], selectedCategory: .constant(.allMenu))
+//    }
+//}

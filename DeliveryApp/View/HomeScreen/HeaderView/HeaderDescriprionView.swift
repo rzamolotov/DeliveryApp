@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HeaderDescriprionView: View {
-    var category: [CategoryItems]
+    
+    
+    var selectedCategory: CategoryItems?
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         HStack {
             Button {
@@ -20,7 +24,7 @@ struct HeaderDescriprionView: View {
                     .foregroundColor(.black)
             }
 
-            Text(category.first?.name ?? "") // Отображаем имя выбранной категории или пустую строку, если нет выбранной категории
+            Text(selectedCategory?.name ?? "")
                 .font(.title3)
 
             Spacer()
@@ -31,8 +35,8 @@ struct HeaderDescriprionView: View {
     }
 }
 
-struct HeaderDescriprionView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderDescriprionView(category: [categoryExample]) // Передаем выбранную категорию
-    }
-}
+//struct HeaderDescriprionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HeaderDescriprionView(category: [categoryExample]) // Передаем выбранную категорию
+//    }
+//}

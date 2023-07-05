@@ -21,12 +21,12 @@ struct MainTabView: View {
             switch self {
             case .home:
                 return TabItemData(image: "house", selectedImage: "house.fill", title: "Главная", isCart: false)
+            case .cart:
+                return TabItemData(image: "cart", selectedImage: "cart.fill", title: "Корзина", isCart: true)
             case .search:
                 return TabItemData(image: "magnifyingglass.circle", selectedImage: "magnifyingglass.circle.fill", title: "Поиск", isCart: false)
-            case .cart:
-                return TabItemData(image: "cart", selectedImage: "cart.fill", title: "Примерить", isCart: true)
             case .peron:
-                return TabItemData(image: "person", selectedImage: "person.fill", title: "О нас", isCart: false)
+                return TabItemData(image: "person", selectedImage: "person.fill", title: "Аккаунт", isCart: false)
             }
         }
     }
