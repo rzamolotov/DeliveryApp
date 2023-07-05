@@ -11,7 +11,7 @@ struct Products: Codable {
     let dishes: [Dishes]
 }
 
-struct Dishes: Identifiable, Codable {
+struct Dishes: Identifiable, Codable, Equatable {
     let id: Int
     let name: String
     let price: Int

@@ -10,6 +10,7 @@ import SwiftUI
 struct TabItemView: View {
     let data: TabItemData
     var isSelected: Bool
+    @EnvironmentObject var shop: Shop
 
     
     var body: some View {
@@ -20,6 +21,16 @@ struct TabItemView: View {
                     .aspectRatio(contentMode: .fit)
                     .animation(.default, value: 1)
                     .foregroundColor(isSelected ? .blue : .gray)
+                if data.isCart == true && shop.products.count > 0 {
+                    Text("\(shop.products.count)")
+                        .font(.custom(boldFont, size: fontSizeVerySmall))
+                        .foregroundColor(.white)
+                        .frame(width: 15, height: 15)
+                        .background(Color.red)
+                        .opacity(2)
+                        .cornerRadius(60)
+                        .offset(x: 13, y: -12)
+                }
             }
             
             Spacer().frame(height: 4)

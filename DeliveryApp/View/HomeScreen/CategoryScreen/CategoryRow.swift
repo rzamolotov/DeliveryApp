@@ -16,7 +16,7 @@ struct CategoryRow: View {
         ScrollView {
             ForEach(categories) { category in
                 NavigationLink {
-                    Item_HeaderView()
+                    ItemsMainView(products: products)
                 } label: {
                     CategoryItemView(categoryItem: category)
                 }

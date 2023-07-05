@@ -65,7 +65,9 @@ struct CartItemView: View {
                         Button(action: {
                             if counter > 0 {
                                 counter -= 1
-                                shop.removeFromCart(product: product)
+                                if counter == 0 {
+                                    shop.removeFromCart(product: product)
+                                }
                             }
                         }, label: {
                             Image(systemName: "minus")
